@@ -30,6 +30,12 @@
 |
 """
 
+def _exec_modules(*args, **kwargs):
+  pass
+
+def _ret_modules(*args, **kwargs):
+  pass
+
 def include(*args, **kwargs):
   """Here is where all the magic ocour. This function takes an
   infinite amount of paths and they are being executend to 
@@ -47,6 +53,22 @@ def include(*args, **kwargs):
     by the current platform and it will open it's content and 
     execute it, so you don't need a path divided by `.` or 
     a `__init__.py`
+
+  Args:
+    files [list(str)]: A list of paths to include.
+    ret [bool]: If it is set to True, return the module (defaults to False).
+
+  Note: 
+    If `ret` is set to `True`, the function will return all modules
+    as user will need to unpack them.
   """
   
-  pass
+  # Check if user inserted `ret` as True. If it not,
+  # we will open the file and execute it's content.
+  # If it is True, we will return the module they
+  # whanted to import.
+  if not ret:
+    _exec_modules(*args, **kwargs)
+
+  return _ret_modules(*args, **kwargs)
+  
