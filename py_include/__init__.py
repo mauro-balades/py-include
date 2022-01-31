@@ -62,6 +62,10 @@ def include(*args, **kwargs):
     If `ret` is set to `True`, the function will return all modules
     as user will need to unpack them.
   """
+
+  # Get the value whether user whan't to execute
+  # the module or to return it. (defaults to False)
+  ret = kwargs.get("ret", False)
   
   # Check if user inserted `ret` as True. If it not,
   # we will open the file and execute it's content.
