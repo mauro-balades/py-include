@@ -29,3 +29,24 @@
 | SOFTWARE.
 |
 """
+
+def include(*args, **kwargs):
+  """Here is where all the magic ocour. This function takes an
+  infinite amount of paths and they are being executend to 
+  feel like user imported it.
+
+  Note: 
+    It can  also be used to store it into a variable if user
+    needs it. This can be done by adding the argument `ret`
+    to True (more detail in #Args).
+
+  Note:
+    Please note how (for the import statement) you will need a
+    `__init__.py` and paths separated by dots. With py-include,
+    you don't need. Py-include will make your path supported
+    by the current platform and it will open it's content and 
+    execute it, so you don't need a path divided by `.` or 
+    a `__init__.py`
+  """
+  
+  pass
