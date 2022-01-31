@@ -30,8 +30,21 @@
 |
 """
 
+from pathlib import Path
+import sys
+
+# its win32, maybe there is win64 too?
+is_windows = sys.platform.startswith('win')
+
 def _exec_modules(*args, **kwargs):
-  pass
+  
+  # Iterate every path that user gives as
+  # arguments (stored in *args).
+  for arg in args:
+    
+    # Store the path into a 
+    # platform specific-path
+    path = Path(arg)
 
 def _ret_modules(*args, **kwargs):
   pass
