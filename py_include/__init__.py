@@ -33,11 +33,16 @@
 from pathlib import Path
 import sys
 
-# its win32, maybe there is win64 too?
-is_windows = sys.platform.startswith('win')
-
 def _exec_modules(*args, **kwargs):
   
+  # Get locals from kwargs
+  local = kwargs.get("local", None)
+
+  # Check if local is None,
+  # because user did not define it.
+  if local is None:
+    raise Exception("Need to pass the local variable")
+
   # Iterate every path that user gives as
   # arguments (stored in *args).
   for arg in args:
@@ -45,6 +50,14 @@ def _exec_modules(*args, **kwargs):
     # Store the path into a 
     # platform specific-path
     path = Path(arg)
+
+    # Open the file and get it's
+    # content
+    with open(path, "r") as f:
+      data = f.read()
+
+      # Execute the file content.
+      exec(data, globals(), local)
 
 def _ret_modules(*args, **kwargs):
   pass
